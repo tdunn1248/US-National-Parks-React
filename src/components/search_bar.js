@@ -20,11 +20,11 @@ export default class SearchBar extends Component {
   }
   statesSelectList() {
     return allStates.map(state => {
-      const stateKeys = state.split(' - ')
+      const states = state.split(' - ')
 
       return <option
-              key={stateKeys[0]}
-              value={stateKeys[1]}> {stateKeys[1]} </option>
+              key={states[0]}
+              value={states[1]}> {states[1]} </option>
     })
   }
   onSubmit(e) {
@@ -60,7 +60,8 @@ export default class SearchBar extends Component {
           <datalist id='national-park-dropdown'>
             {(this.props.allParks ? dropDownOptions : null)}
           </datalist>
-          <select onChange={this.props.updateParkDataList}>{this.statesSelectList()}</select>
+          <select
+            onChange={this.props.updateParkDataList}>{this.statesSelectList()}</select>
           <button
             className='btn btn-success'
             onClick={this.onSubmit}

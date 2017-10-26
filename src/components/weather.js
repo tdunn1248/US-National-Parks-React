@@ -1,39 +1,8 @@
 import React, { Component } from 'react'
 
 // import Transition from 'react-transition-group/Transition';
-//
-// const duration = 300;
-//
-// const defaultStyle = {
-//   transition: `opacity ${duration}ms ease-in-out`,
-//   opacity: 0,
-// }
-//
-// const transitionStyles = {
-//   entering: { opacity: 0 },
-//   entered:  { opacity: 1 },
-// };
-//
-// const Fade = ({ in: inProp }) => (
-//   <Transition in={inProp} timeout={duration}>
-//     {(state) => (
-//       <div style={{
-//         ...defaultStyle,
-//         ...transitionStyles[state]
-//       }}>
-//         I'm A fade Transition!
-//       </div>
-//     )}
-//   </Transition>
-// )
-
 
 export default class Weather extends Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
   componentWillUpdate() {
     const listOfParks = []
     if (this.props.selectedStateParks.length > 0) {
@@ -42,27 +11,6 @@ export default class Weather extends Component {
       )
     }
     return listOfParks
-  }
-  renderParks(parks) {
-    if (!parks) return
-    return parks.map(park => {
-      return (
-        <a onClick={this.handleClick} value={park.id}>
-          <li key={park.id}>{park.name}</li>
-        </a>
-      )
-    })
-  }
-  handleClick(e) {
-    return this.props.allParks.map(park => {
-      if (park.name === e.target.innerHTML) {
-        this.props.getParkWeatherData(
-          park.lat,
-          park.long,
-          e.target.innerHTML
-        )
-      }
-    })
   }
   renderParkInfo() {
     if (Object.keys(this.props.weatherData).length === 0) return
@@ -85,7 +33,6 @@ export default class Weather extends Component {
     )
   }
   render() {
-    const listOfParks = this.renderParks(this.props.selectedStateParks)
     return (
       <div className='wcc'>
         <div className='weather-container'>
@@ -94,8 +41,6 @@ export default class Weather extends Component {
             this.props.weatherData.name :
             'All the National Parks in one place'
           } </h3>
-          {/* <Fade in={this.state.in} /> */}
-          { listOfParks ? <ul>{listOfParks}</ul> : null }
           { this.renderParkInfo() }
         </div>
       </div>
