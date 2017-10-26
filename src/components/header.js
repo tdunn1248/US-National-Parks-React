@@ -5,7 +5,7 @@ export default class Header extends Component {
     return (
       <header>
         <div className='header-title'>
-          <h1>Explore America's National Parks!</h1>
+          <h1>Explore Americas National Parks!</h1>
         </div>
       </header>
     )
