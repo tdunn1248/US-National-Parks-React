@@ -9,14 +9,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import CardExampleExpandable from './google-map-card'
+import GoogleMapCard from './google-map-card'
 import WeatherCard from './weather-card'
 
 import { getAllNationalParks, getParkWeatherByCoords, getNationalParksImages }  from '../models/api/index'
 import { getLat, getLong, unixToTimeStamp, convertKelvinToFahr, metersPerSecToMilesPerHour } from './helpers/latitude-longitude'
 
 // fix margin gap
-// bring in raised button from material for the Go button 
+// bring in raised button from material for the Go button
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -113,7 +113,7 @@ export default class App extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div className='app'>
           <Header />
-            <CardExampleExpandable
+            <GoogleMapCard
               lon={this.state.selectedParkWeatherData.lng}
               lat={this.state.selectedParkWeatherData.lat} />
             <WeatherCard
