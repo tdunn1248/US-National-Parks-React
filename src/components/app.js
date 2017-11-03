@@ -5,10 +5,18 @@ import Footer from './footer'
 import Weather  from './weather'
 import GoogleMap from './google_map'
 import allStates from '../models/datasets/fifty-states'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+import CardExampleExpandable from './google-map-card'
+import WeatherCard from './weather-card'
 
 import { getAllNationalParks, getParkWeatherByCoords, getNationalParksImages }  from '../models/api/index'
 import { getLat, getLong, unixToTimeStamp, convertKelvinToFahr, metersPerSecToMilesPerHour } from './helpers/latitude-longitude'
 
+// fix margin gap
+// bring in raised button from material for the Go button 
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -23,9 +31,9 @@ export default class App extends Component {
     this.updateParkDataList = this.updateParkDataList.bind(this)
   }
   componentWillMount() {
-    const allParks = []
     const allNationalParks = getAllNationalParks()
 
+    const allParks = []
     allNationalParks.data.map(park => {
        allParks.push({
          id: park.id,
@@ -46,7 +54,7 @@ export default class App extends Component {
     })
   }
   getParkWeatherData(selectedCity, latitude, longitude) {
-    const park =  this.grabSelectedParkInfo(latitude, longitude, selectedCity)
+    const park = this.grabSelectedParkInfo(latitude, longitude, selectedCity)
     getParkWeatherByCoords(latitude, longitude)
     .then(response => response.json())
     .then(weatherData => {
@@ -73,7 +81,7 @@ export default class App extends Component {
   grabSelectedParkInfo(lat, lng, selectedCity) {
     const selectedPark = {}
     this.state.dataListParkData.forEach(park => {
-      if (park.name === selectedCity ) {
+      if (park.name === selectedCity) {
         selectedPark.description = park.description
         selectedPark.weatherInfo = park.weatherInfo
         selectedPark.directionsUrl = park.directions
@@ -84,47 +92,43 @@ export default class App extends Component {
     return selectedPark
   }
   updateParkDataList(searched) {
-    let selectedStateParks = []
+    let matchedQueryParks = []
     allStates.map(state => {
       const stateName = state.split(' - ')
-        if (stateName[1] === searched ) {
-          return this.state.allParks.filter(park => {
-            if(park.states.includes(stateName[0]) ) {
-              selectedStateParks.push(park)
-            }
-          })
-        }
+      if (stateName[1] === searched ) {
+        return this.state.allParks.filter(park => {
+          if (park.states.includes(stateName[0])) {
+            matchedQueryParks.push(park)
+          }
+        })
+      }
       this.setState({
-        dataListParkData: selectedStateParks,
+        dataListParkData: matchedQueryParks,
         selectedParkWeatherData: {}
       })
     })
   }
   render() {
     return (
-      <div className='app'>
-        <Header />
-        <div className='container'>
-          <GoogleMap
-            lon={this.state.selectedParkWeatherData.lng}
-            lat={this.state.selectedParkWeatherData.lat}
-          />
-          <SearchBar allParks= {
-            this.state.dataListParkData ?
-            this.state.dataListParkData : null
-          } getParkWeatherData={this.getParkWeatherData}
-            handleStateSearch={this.handleStateSearch}
-            updateParkDataList={event =>
-              this.updateParkDataList(event.target.value)} />
-          <Weather
-            weatherData={this.state.selectedParkWeatherData}
-            allParks={this.state.dataListParkData}
-            selectedStateParks={this.state.selectedStateParks}
-            getParkWeatherData={this.getParkWeatherData}
-          />
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <div className='app'>
+          <Header />
+            <CardExampleExpandable
+              lon={this.state.selectedParkWeatherData.lng}
+              lat={this.state.selectedParkWeatherData.lat} />
+            <WeatherCard
+              weatherData={this.state.selectedParkWeatherData} />
+            <SearchBar allParks= {
+                this.state.dataListParkData ?
+                this.state.dataListParkData : null
+              }
+              getParkWeatherData={this.getParkWeatherData}
+              handleStateSearch={this.handleStateSearch}
+              updateParkDataList={event => this.updateParkDataList(event.target.value)} />
+
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
