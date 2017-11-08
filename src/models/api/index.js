@@ -24,7 +24,7 @@ export function getParkWeatherByCoords(lat, long) {
 
   const parkWeatherAPI = `${FORECAST_URL}${QS}${API_KEY}`
 
-  return fetch(parkWeatherAPI, {method: 'GET', mode: 'cors', credentials: 'include'})
+  return fetch(parkWeatherAPI, {method: 'GET', mode: 'cors'})
 }
 
 // export function getNationalParksImages() {
