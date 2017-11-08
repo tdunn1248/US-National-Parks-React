@@ -18,7 +18,7 @@ export function getAllNationalParks() {
 
 export function getParkWeatherByCoords(lat, long) {
 
-  const FORECAST_URL = 'http://api.openweathermap.org/data/2.5/weather'
+  const FORECAST_URL = 'https://api.openweathermap.org/data/2.5/weather'
   const QS = `?lat=${lat}&lon=${long}`
   const API_KEY = '&APPID=89f1c016380fc4077b547f8b59a1b70f'
 
