@@ -113,18 +113,16 @@ export default class App extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div className='app'>
           <Header />
-            <GoogleMapCard
-              lon={this.state.selectedParkWeatherData.lng}
-              lat={this.state.selectedParkWeatherData.lat} />
-            <WeatherCard
-              weatherData={this.state.selectedParkWeatherData} />
-            <SearchBar allParks= {
-                this.state.dataListParkData ?
-                this.state.dataListParkData : null
-              }
-              getParkWeatherData={this.getParkWeatherData}
-              handleStateSearch={this.handleStateSearch}
-              updateParkDataList={event => this.updateParkDataList(event.target.value)} />
+          <GoogleMapCard
+            lon={this.state.selectedParkWeatherData.lng}
+            lat={this.state.selectedParkWeatherData.lat} />
+          <SearchBar allParks= {this.state.dataListParkData }
+            getParkWeatherData={this.getParkWeatherData}
+            handleStateSearch={this.handleStateSearch}
+            updateParkDataList={event => this.updateParkDataList(event.target.value)} />
+          <WeatherCard
+            weatherData={this.state.selectedParkWeatherData}
+            expanded={true} />
 
           <Footer />
         </div>

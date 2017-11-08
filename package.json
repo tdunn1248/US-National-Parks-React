@@ -8,7 +8,7 @@
     "url": "git+ssh://git@github.com/StephenGrider/ReduxSimpleStarter.git"
   },
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 4005",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
@@ -32,6 +32,7 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "babel-preset-stage-1": "^6.1.18",
+    "heroku": "^0.2.0",
     "install": "^0.10.1",
     "lodash": "^3.10.1",
     "material-ui": "^0.19.4",
@@ -45,12 +46,5 @@
     "redux": "^3.0.4",
     "redux-promise": "^0.5.3",
     "request-promise": "^4.2.2"
-  },
-  "bugs": {
-    "url": "https://github.com/StephenGrider/ReduxSimpleStarter/issues"
-  },
-  "homepage": "https://github.com/StephenGrider/ReduxSimpleStarter#readme",
-  "directories": {
-    "test": "test"
   }
 }
