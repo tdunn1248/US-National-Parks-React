@@ -24,21 +24,21 @@ export function getParkWeatherByCoords(lat, long) {
 
   const parkWeatherAPI = `${FORECAST_URL}${QS}${API_KEY}`
 
-  return fetch(parkWeatherAPI, {method: 'GET', mode: 'no-cors', credentials: 'include'})
+  return fetch(parkWeatherAPI, {method: 'GET', mode: 'cors', credentials: 'include'})
 }
 
-export function getNationalParksImages() {
-  const ROOT_URL = 'https://developer.nps.gov/api/v1/places/'
-  const QS = `?limit=600`
-  const API_KEY = '&api_key=Km0ie7jJWNP1vOxkQvrkVf2yyV4jTcHzw2iz3qA9'
-
-  const nationalParkNamesAPI = `${ROOT_URL}${QS}${API_KEY}`
-
-  const headers = new Headers({
-    method: 'GET',
-    mode: 'no-cors',
-    Authorization: API_KEY,
-    credentials: 'include'
-  })
-  return fetch(nationalParkNamesAPI, {headers})
-}
+// export function getNationalParksImages() {
+//   const ROOT_URL = 'https://developer.nps.gov/api/v1/places/'
+//   const QS = `?limit=600`
+//   const API_KEY = '&api_key=Km0ie7jJWNP1vOxkQvrkVf2yyV4jTcHzw2iz3qA9'
+//
+//   const nationalParkNamesAPI = `${ROOT_URL}${QS}${API_KEY}`
+//
+//   const headers = new Headers({
+//     method: 'GET',
+//     mode: 'no-cors',
+//     Authorization: API_KEY,
+//     credentials: 'include'
+//   })
+//   return fetch(nationalParkNamesAPI, {headers})
+// }
