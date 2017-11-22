@@ -15,7 +15,6 @@ class WeatherCard extends React.Component {
     this.toggleExpansion(true)
   }
   toggleExpansion(expanded) {
-    console.log('stop passing prop')
     if (!expanded)
     this.setState({isExpanded : false})
   }
