@@ -24,7 +24,7 @@ export function getParkWeatherByCoords(lat, long) {
 
   const parkWeatherAPI = `${FORECAST_URL}${QS}${API_KEY}`
 
-  const init = new Header({
+  const init = new Headers({
     method: 'GET',
     mode: 'cors'
   })
