@@ -6,7 +6,6 @@ const GoogleMapCard = (props) => (
   <Card>
     <CardHeader
       title="Check out the Satellite View"
-      subtitle="From Google Maps"
       actAsExpander={true}
       showExpandableButton={true}
     />

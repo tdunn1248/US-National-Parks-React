@@ -13,7 +13,6 @@ export function getAllNationalParks() {
   // })
   // return fetch(nationalParkNamesAPI, {headers})
   return nationalParks
-
 }
 
 export function getParkWeatherByCoords(lat, long) {
@@ -36,7 +35,7 @@ export function getParkWeatherByCoords(lat, long) {
 //
 //   const headers = new Headers({
 //     method: 'GET',
-//     mode: 'no-cors',
+//     mode: 'cors',
 //     Authorization: API_KEY,
 //     credentials: 'include'
 //   })

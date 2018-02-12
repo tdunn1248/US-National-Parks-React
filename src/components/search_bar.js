@@ -62,11 +62,15 @@ export default class SearchBar extends Component {
             {(this.props.allParks ? dropDownOptions : null)}
           </datalist>
           <select
-            onChange={this.props.updateParkDataList}>{this.statesSelectList()}</select>
+            onChange={this.props.updateParkDataList}>
+              {this.statesSelectList()}
+          </select>
           <button
             className='btn btn-success'
             onClick={this.onSubmit}
-            type='submit'> Go! </button>
+            type='submit'>
+              Go!
+          </button>
         </form>
       </div>
     )

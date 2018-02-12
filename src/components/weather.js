@@ -25,13 +25,12 @@ export default class Weather extends Component {
   }
   render() {
     const parkName = this.props.weatherData.name
-    const parkInfo = this.renderParkInfo()
     return (
       <div className='wcc'>
         <div className='weather-container'>
           <h3> { parkName ? parkName : 'Search for a park to find current info!'} </h3>
 
-          { parkInfo }
+          { this.renderParkInfo() }
         </div>
       </div>
     )
