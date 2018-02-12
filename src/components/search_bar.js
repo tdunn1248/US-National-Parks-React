@@ -48,8 +48,8 @@ export default class SearchBar extends Component {
   render() {
     const dropDownOptions = this.listMaker(this.props.allParks)
     return (
-      <div className='form-container'>
-        <form>
+      <div style={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center', padding: '2%', backgroundColor: '#424242'}}>
+        <form style={{margin: 0}}>
           <input
             className='input-selected'
             type={'text'}

@@ -9,8 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import GoogleMapCard from './google-map-card'
-import WeatherCard from './weather-card'
+import SelectedPark from './Selected-Park'
 
 import { getAllNationalParks, getParkWeatherByCoords, getNationalParksImages }  from '../models/api/index'
 import { getLat, getLong, unixToTimeStamp, convertKelvinToFahr, metersPerSecToMilesPerHour } from './helpers/latitude-longitude'
@@ -113,16 +112,26 @@ export default class App extends Component {
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div className='app'>
           <Header />
-          <GoogleMapCard
+
+        {/*
             lon={this.state.selectedParkWeatherData.lng}
             lat={this.state.selectedParkWeatherData.lat} />
+        */}
+
+
+
+
           <SearchBar allParks= {this.state.dataListParkData }
             getParkWeatherData={this.getParkWeatherData}
             handleStateSearch={this.handleStateSearch}
             updateParkDataList={event => this.updateParkDataList(event.target.value)} />
-          <WeatherCard
+            
+          <SelectedPark isMap={true} selectedParkWeatherData={this.state.selectedParkWeatherData} />
+
+        {/*
             weatherData={this.state.selectedParkWeatherData}
             expanded={true} />
+        */}
 
           <Footer />
         </div>
