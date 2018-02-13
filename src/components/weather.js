@@ -13,8 +13,8 @@ export default class Weather extends Component {
         <p key={park.id}>Humidity: {park.humidity} % </p>
         <p key={park.id}>Wind Speed: {park.windSpeed} mph</p>
         <p key={park.id}>{park.parkWeatherDescription}</p>
-        <p key={park.id}>{park.designation}</p>
         <p key={park.id}>{park.parkDescription}</p>
+        <p key={park.id}>Status: {park.designation}</p>
         <span key={park.id}> <a
           key={park.id}
           href={park.directionsUrl}
@@ -24,10 +24,17 @@ export default class Weather extends Component {
   }
   render() {
     return (
-      <div style={{display: 'flex', backgroundColor: '#424242', padding: '1%', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <div className='weather-container'>
-          { this.renderParkInfo() }
-        </div>
+      <div style={{
+        display: 'flex',
+        backgroundColor: '#424242',
+        padding: '1%',
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'}}>
+          <div className='weather-container'>
+            { this.renderParkInfo() }
+          </div>
       </div>
     )
   }

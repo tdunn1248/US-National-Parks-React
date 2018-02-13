@@ -7,7 +7,6 @@ export default class SearchBar extends Component {
     this.state = { term: ''  }
     this.handleChange = this.handleChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    this.getParkSelectedData = this.props.getParkWeatherData
   }
   listMaker(allParks) {
     if (!allParks) return
@@ -34,7 +33,7 @@ export default class SearchBar extends Component {
     const coordinates = this.props.allParks
                         .filter(park => park.name === searchedTerm)
 
-    this.getParkSelectedData(
+    this.props.getParkWeatherData(
       searchedTerm,
       coordinates[0].lat,
       coordinates[0].long

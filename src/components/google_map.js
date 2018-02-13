@@ -22,10 +22,15 @@ class GoogleMap extends Component {
     })
   }
   render() {
-    console.log('map propsss', this.props)
     return (
-      <div style={{display: 'flex', backgroundColor: '#424242', padding: '1%', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <div className='google-map' ref='map' />
+      <div style={{
+        display: 'flex',
+        backgroundColor: '#424242',
+        padding: '1%', flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'}}>
+          <div className='google-map' ref='map' />
       </div>
     )
   }

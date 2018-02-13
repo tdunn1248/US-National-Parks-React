@@ -125,8 +125,11 @@ export default class App extends Component {
             getParkWeatherData={this.getParkWeatherData}
             handleStateSearch={this.handleStateSearch}
             updateParkDataList={event => this.updateParkDataList(event.target.value)} />
-            
-          <SelectedPark isMap={true} selectedParkWeatherData={this.state.selectedParkWeatherData} />
+
+          <SelectedPark
+            isMap={true}
+            getParkWeatherData={this.getParkWeatherData}
+            selectedParkWeatherData={this.state.selectedParkWeatherData} />
 
         {/*
             weatherData={this.state.selectedParkWeatherData}

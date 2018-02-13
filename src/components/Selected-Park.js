@@ -13,17 +13,19 @@ export default class SelectedPark extends Component {
   }
   toggleMap(isMap) {
     if(isMap) {
-      console.log('is');
       this.setState({isMap: false})
     } else {
-      console.log('not!!');
       this.setState({isMap: true})
     }
   }
   render() {
     const { selectedParkWeatherData } = this.props
     const { lat, lng } = selectedParkWeatherData
-    console.log('selcting park:::', selectedParkWeatherData);
+
+    if(!Object.keys(selectedParkWeatherData).length > 0) {
+      this.props.getParkWeatherData('Grand Canyon', 36.1070, -112.1130)
+    }
+    
     return (
       <div>
         <div style={{backgroundColor: '#eeeeee', justifyContent: 'center'}}>
